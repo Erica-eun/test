@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<!-- 일반회원의 페이지 설정 -->
+	<!--
+ 	<definition name="baseLayout" template="/WEB-INF/views/template/template.jsp">
+		<put-attribute name="title" value="Shop"/>
+		<put-attribute name="menu" value="/WEB-INF/views/template/menu.jsp"/>
+		<put-attribute name="side" value="/WEB-INF/views/template/user_side.jsp"/>
+		<put-attribute name="body" value=""/>
+	</definition>
+	-->
+	
+	<definition name="baseLayout" template="/WEB-INF/views/template/base_template.jsp">
+		<put-attribute name="title" value="Shop"/>
+		<put-attribute name="menu" value="/WEB-INF/views/template/menu.jsp"/>
+		<put-attribute name="body" value=""/>
+	</definition>
+	
+	<!-- 컨트롤러에서 리턴해준 값(item/item_list)을 밑의 defimition태그의 name에 받음 -->
+	<!-- extend 속성 : baseLayout으로 확장
+		 (위의 definition태그의 name이 baseLayout이라서 위에 name값이 body인 부분에 value값을 여기서 설정해줌) -->
+	<definition name="*/*" extends="baseLayout">
+		<!-- {1} : item / {2} : item_list -->
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"/>
+	</definition>
+	
+</tiles-definitions>
